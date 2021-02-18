@@ -31,7 +31,7 @@ function FormComponent() {
       },
     },
     {
-      command: "put :condition",
+      command: "insert :condition",
       callback: (condition) => {
         console.log(`condition: ${condition}`);
         if (selectedId && document.getElementById(selectedId)) {
@@ -43,7 +43,7 @@ function FormComponent() {
     {
       command: "clear :condition",
       callback: (condition) => {
-        console.log(`condition: ${condition}`);
+        console.log(`clearing: ${condition}`);
         if (document.getElementById(condition)) {
           document.getElementById(condition).value = "";
         }
@@ -70,7 +70,6 @@ function FormComponent() {
                   id={ids[0]}
                   type="email"
                   placeholder="Enter email"
-                  autoComplete={false}
                 ></Form.Control>
               </Form.Group>
             </Col>
@@ -81,7 +80,6 @@ function FormComponent() {
                   id={ids[1]}
                   type="password"
                   placeholder="Enter password"
-                  autoComplete={false}
                 ></Form.Control>
               </Form.Group>
             </Col>
@@ -90,12 +88,7 @@ function FormComponent() {
             <Col>
               <Form.Group>
                 <Form.Label>Address</Form.Label>
-                <Form.Control
-                  id={ids[2]}
-                  as="textarea"
-                  rows={3}
-                  autoComplete={false}
-                ></Form.Control>
+                <Form.Control id={ids[2]} as="textarea" rows={3}></Form.Control>
               </Form.Group>
             </Col>
             <Col>
