@@ -6,7 +6,7 @@ import SpeechRecognition, {
 
 function FormComponent() {
   const [selectedId, setSelectedId] = React.useState(null);
-  const [inputValue, setInputValue] = React.useState(null);
+
   const commands = [
     {
       command: "select :condition",
@@ -15,6 +15,7 @@ function FormComponent() {
         try {
           document.getElementById(`${condition}`).style.backgroundColor =
             "#fad698";
+          setSelectedId(condition);
         } catch (e) {
           console.error(e);
         }
@@ -26,6 +27,25 @@ function FormComponent() {
             document.getElementById(`${id}`).style.backgroundColor =
               "transparent";
           }
+        }
+      },
+    },
+    {
+      command: "put :condition",
+      callback: (condition) => {
+        console.log(`condition: ${condition}`);
+        if (selectedId && document.getElementById(selectedId)) {
+          document.getElementById(selectedId).value = condition;
+          console.log(`Success in setting ${selectedId} as ${condition}`);
+        }
+      },
+    },
+    {
+      command: "clear :condition",
+      callback: (condition) => {
+        console.log(`condition: ${condition}`);
+        if (document.getElementById(condition)) {
+          document.getElementById(condition).value = "";
         }
       },
     },
