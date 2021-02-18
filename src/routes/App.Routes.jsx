@@ -34,16 +34,16 @@ function AppRoutes() {
 
         {/*  Route - Component correspondence declaration*/}
         <Switch>
-          <Route exact path="/home">
-            <HomeComponent />
-          </Route>
           <Route exact path="/html-form">
             <FormComponent />
           </Route>
           <Route exact path="/pdf-form">
             <PDFComponent />
           </Route>
-          <Route path="/">
+          <Route exact path="/">
+            <HomeComponent />
+          </Route>
+          <Route path="/*">
             <NotFoundComponent />
           </Route>
         </Switch>
